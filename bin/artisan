@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-bin/cli artisan "$@"
+bin/cli php artisan "$@"

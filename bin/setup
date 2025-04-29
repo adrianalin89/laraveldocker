@@ -50,4 +50,24 @@ if ! docker network ls | grep -q "${NETWORK_NAME}"; then
   docker network create "${NETWORK_NAME}"
 fi
 
+if [ -f "$ENV_FILE" ]; then
+    DOMAIN_HOST=$(grep -E '^DOMAIN_HOSTS=' "$ENV_FILE" | cut -d '=' -f2)
+else
+    echo "The .env file was not found!"
+    exit 1
+fi
+
+if [ -z "$DOMAIN_HOST" ]; then
+    echo "DOMAIN_HOST missing in .env file!"
+    exit 1
+fi
+echo "DOMAIN_HOST: $DOMAIN_HOST"
+
+if ! grep -q "$DOMAIN_HOST" /etc/hosts; then
+    echo "Your system password is needed to add an entry to /etc/hosts..."
+    echo "127.0.0.1 ::1 $DOMAIN_HOST" | sudo tee -a /etc/hosts
+fi
+
+
 bin/start
+bin/composer setup
