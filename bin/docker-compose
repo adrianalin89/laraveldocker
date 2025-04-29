@@ -6,4 +6,4 @@ else
   DOCKER_COMPOSE="docker-compose"
 fi
 
-${DOCKER_COMPOSE} -f compose.yml "$@"
+${DOCKER_COMPOSE} -f compose.yaml "$@"

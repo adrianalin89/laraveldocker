@@ -24,7 +24,7 @@ services:
         - LETSENCRYPT_HOST=${DOMAIN_HOSTS}
         - LETSENCRYPT_EMAIL=${DOMAIN_EMAIL}
 
-      {{project_name}}-php:
+    {{project_name}}-php:
       container_name: {{project_name}}-php
       restart: unless-stopped
       user: ${USER_ID}:${GROUP_ID}
@@ -46,7 +46,7 @@ services:
         - mail-catcher-network
         - {{project_name}}-network
 
-      {{project_name}}-redis:
+    {{project_name}}-redis:
       container_name: {{project_name}}-redis
       image: valkey/valkey:8.1-alpine
       restart: unless-stopped
@@ -57,7 +57,7 @@ services:
       volumes:
         - redisdata:/data
 
-      {{project_name}}-db:
+    {{project_name}}-db:
       container_name: {{project_name}}-db
       image: mariadb:11.4
       restart: unless-stopped
