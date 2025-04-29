@@ -70,11 +70,11 @@ services:
         --innodb_log_file_size=1G
         --innodb_write_io_threads=16
       environment:
-        MYSQL_HOST: "${MYSQL_HOST}"
-        MYSQL_DATABASE: "${MYSQL_DATABASE}"
-        MYSQL_USER: "${MYSQL_USER}"
-        MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
-        MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+        MYSQL_HOST: "${DB_HOST}"
+        MYSQL_DATABASE: "${DB_DATABASE}"
+        MYSQL_USER: "${DB_USERNAME}"
+        MYSQL_PASSWORD: "${DB_PASSWORD}"
+        MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       ports:
         - "3306"
       volumes:
